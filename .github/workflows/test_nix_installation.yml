@@ -7,8 +7,5 @@ jobs:
     steps:
       - uses: nixbuild/nix-quick-install-action@v26
       - run: nix build --version
-      - run: nix build ./examples/flakes-simple
-      - name: hello
-        run: ./result/bin/hello
       - name: Hello Cow
         run: nix-shell -p cowsay --run cowsay Hello

@@ -16,4 +16,4 @@ jobs:
       - name: Hello Cow
         run: |
           export NIX_PATH=nixpkgs="$(pwd)"/nixpkgs-6723fa4e4f1a30d42a633bef5eb01caeb281adc3
-          nix-shell -p cowsay --run cowsay Hello
+          nix-shell -p cowsay --run "cowsay Hello"

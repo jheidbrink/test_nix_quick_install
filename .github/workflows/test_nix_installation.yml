@@ -7,5 +7,13 @@ jobs:
     steps:
       - uses: nixbuild/nix-quick-install-action@v26
       - run: nix build --version
+      - run: |
+          commit=6723fa4e4f1a30d42a633bef5eb01caeb281adc3 # nixos-23.11 branch from 2024-01-08
+          if ! [ -d "nixpkgs-${commit}" ]
+          then
+            curl "https://github.com/NixOS/nixpkgs/tarball/${commit}.tar.gz" | tar -xz
+          fi
       - name: Hello Cow
-        run: nix-shell -p cowsay --run cowsay Hello
+        run: |
+          export NIX_PATH=nixpkgs=$HOME/nixpkgs-6723fa4e4f1a30d42a633bef5eb01caeb281adc3
+          nix-shell -p cowsay --run cowsay Hello

@@ -11,7 +11,7 @@ jobs:
           commit=6723fa4e4f1a30d42a633bef5eb01caeb281adc3 # nixos-23.11 branch from 2024-01-08
           if ! [ -d "nixpkgs-${commit}" ]
           then
-            curl "https://github.com/NixOS/nixpkgs/tarball/${commit}.tar.gz" | tar -xz
+            curl --location "https://github.com/NixOS/nixpkgs/tarball/${commit}.tar.gz" | tar -xz
           fi
       - name: Hello Cow
         run: |
